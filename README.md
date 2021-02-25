@@ -11,4 +11,4 @@ This course teaches FPGA programming, hardware system design, and how to impleme
 
 ## Lab
 
-[Lab0](./lab0)
+[Lab0](https://github.com/ianchen0119/Advanced-FPGA-Design/tree/master/Lab0)
