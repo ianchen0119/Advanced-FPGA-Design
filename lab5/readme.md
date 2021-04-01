@@ -45,7 +45,9 @@ THETA_TYPE cordic_phase[iteration_num] = {45.0, 26.565, 14.036, 7.125, 3.576, 1.
 int sigma = (theta>0)?1:-1;
 ```
 接著，照著演算法做矩陣運算:
+
 ![](https://i.imgur.com/GasBZnT.jpg)
+
 ```c=
 current_cos = current_cos - current_sin * sigma * factor;
 current_sin = temp_cos * sigma * factor + current_sin;
