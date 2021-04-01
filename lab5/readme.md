@@ -32,7 +32,7 @@ void cordic(THETA_TYPE theta, COS_SIN_TYPE &s, COS_SIN_TYPE &c){
 THETA_TYPE cordic_phase[iteration_num] = {45.0, 26.565, 14.036, 7.125, 3.576, 1.790, 0.895};
 ```
 投影片有提到多次跌代後在輸出時需要乘上 `1.64676` 做修正。
-對處理器來說，乘法所需的  CPU 週期遠大與加法，我們直接將 cos 的初始值由 1.0 改為 `0.60735` 就可以省掉一次加法的成本:
+對處理器來說，乘法所需的  CPU 週期遠大與加法，我們直接將 cos 的初始值由 1.0 改為 `0.60735` 就可以省掉一次乘法的成本:
 ```c=
   COS_SIN_TYPE current_cos = 0.60735;
 	COS_SIN_TYPE current_sin = 0.0;
@@ -45,6 +45,7 @@ THETA_TYPE cordic_phase[iteration_num] = {45.0, 26.565, 14.036, 7.125, 3.576, 1.
 int sigma = (theta>0)?1:-1;
 ```
 接著，照著演算法做矩陣運算:
+![](https://i.imgur.com/GasBZnT.jpg)
 ```c=
 current_cos = current_cos - current_sin * sigma * factor;
 current_sin = temp_cos * sigma * factor + current_sin;
